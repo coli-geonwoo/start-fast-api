@@ -27,3 +27,15 @@ def root(name: str):
 @app.get("/home-err/{name}")
 def home(name: int):
     return {"name": name}
+
+# 쿼리 스트링 예제
+fake_items_db = [{"item_name" : "Foo"}, {"item_name", "Bar"}, {"item_name", "Baz"}]
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, page: int = 0, size: int = 10):
+    return fake_items_db[page: page+size]
+
+# post 예제
+@app.post("/")
+def home_post(msg:str):
+    return {"Hello": "POST", "msg": msg}
